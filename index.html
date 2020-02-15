@@ -2,149 +2,25 @@
 <html>
 
 <head>
-    <link href="https://fonts.googleapis.com/css?family=Cutive+Mono&display=swap" rel="stylesheet">
-    <title></title>
-    <style type="text/css">
-    body {
-        margin: 0;
-        background-image: url(restaurant4.png);
-        background-size: cover;
-        background-repeat: repeat;
-        z-index: -10;
-        position: inherit;
-    }
 
-    .containerText {
-        position: relative;
-        width: 80%;
-        padding: 5%;
-        /*        height: 600px;
-*/
-        top: 100%;
-        text-align: left;
-        font-size: 18px;
-        font-family: 'Cutive Mono', monospace;
-        color: white;
-        opacity: 1;
-        background-color: rgba(0, 0, 0, 0.3);
-    }
-
-    .container {
-
-        margin: 2px;
-        opacity: 0.8;
-        width: 700px;
-        height: 700px;
-        position: absolute;
-        display: inline-block;
-        border-radius: 50%;
-        z-index: -1;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-    }
-
-    #know {
-        left: 0%;
-
-    }
-
-    #feel {
-        left: 50%;
-
-    }
-
-    #plate {
-        width: 700px;
-        height: 300px;
-        /*        background-color: red;
-*/
-        position: absolute;
-        top: 47%;
-        left: 25%;
-        background-image: url("menu.png");
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        z-index: 1;
-
-    }
+<!--     this is the link to the font I'm using
+ -->   <link href="https://fonts.googleapis.com/css?family=Cutive+Mono&display=swap" rel="stylesheet">
+    <title>Feel vs Know</title>
 
 
-
-    #molly {
-        z-index: 1;
-        position: absolute;
-        border: none;
-        background-image: url("head.png");
-        background-size: cover;
-        width: 700px;
-        height: 300px;
-        /*        background-color: blue;
-*/
-        position: absolute;
-        top: 70%;
-        left: 25%;
-
-    }
-
-    #quote {
-        width: 100%;
-        /*        background-color: blue;
-*/
-        z-index: 1;
-        font-size: 14px;
-        font-family: 'Cutive Mono', monospace;
-        color: white;
-        background-color: rgba(0, 0, 0, 0.3);
-
-
-
-    }
-
-    #bar {
-        background-color: rgba(0, 0, 0, 0.3);
-        width: 100%;
-        height: 40px;
-        /*        background-color: blue;
-*/
-        z-index: 1;
-
-
-    }
-
-    .subtitle {
-        position: absolute;
-        font-family: 'Cutive Mono', monospace;
-        color: white;
-        display: inline-block;
-        width: 50%;
-        height: 100%;
-        font-size: 30px;
-
-
-
-    }
-
-    #know-title {
-        left: 0%;
-
-    }
-
-    #feel-title {
-        left: 50%;
-
-
-    }
-    </style>
+    <link rel = "stylesheet" type = "text/css" href = "style.css" />
 </head>
 
 <body>
-    <div id="quote">
+<!--     This is the div at the top of the screen with the quote
+ -->    <div id="quote">
         <center>“When the planetary crisis matters to us at all, it has the quality of a war being fought over there. We are aware of the existential stakes and the urgency, but even when we know that a war for our survival is raging, we don’t feel immersed in it. That distance between awareness and feeling can make it very difficult for even thoughtful and politically engaged people—people who want to act— to act.” — Jonathan Safron Foer, <i>We Are The Weather</i>
             <br>
             99% of all land animals eaten or used to produce milk and eggs in the United States are factory farmed. So although there are important exceptions, to speak about eating animals today is to speak about factory farming. — Jonathan Safron Foer, <i>Eating Animals</i> </center>
     </div>
+
+    <!--     These divs hold two child divs that have the text of "what I know" and "what I feel"--> 
+
     <div id="bar">
         <div class="subtitle" id="know-title">
             <center>What I know</center>
@@ -153,42 +29,68 @@
             <center>What I feel</center>
         </div>
     </div>
+    <!-- These are the divs that have the text that appears below the images.--> 
+
+
     <div class="container" id="know">
         <div class="containerText" id="knowText"></div>
     </div>
+
+
     <div class="container" id="feel">
         <div class="containerText" id="feelText"></div>
     </div>
+
+       <!-- This is parent div with children divs that hold the image of my face and the image of the menu/plate, which changes onclick--> 
     <div id="meal">
         <div class="meal" id="plate"></div>
         <div class="meal" id="molly"></div>
     </div>
+
+       <!-- This is where javascript begins!--> 
     <script type="text/javascript">
+
+        //Making a variable for each of my divs...//
+
+
+
     var know = document.getElementById("know");
     var knowText = document.getElementById("knowText");
     var feel = document.getElementById("feel");
     var feelText = document.getElementById("feelText");
     var plate = document.getElementById("plate");
 
+        //Making an array for each animal//
+
     var animals = ["lambchop", "bacon", "chicken", "beef", "octopus", "tuna", "turkey", "eggs", "milk", "snails", "scallops"];
 
+
+
+        //A function that randomly brings up an image of whatever appears on the plate.//
+
     function meat() {
+
+        // q is a variable that holds a random value that I use to plug into the arrays. 
+
+
         var q = Math.round(Math.random() * 10);
         console.log(q);
-        plate.style.backgroundImage = "url(" + animals[q] + ".png)";
-        know.style.backgroundImage = "url(" + animals[q] + ".png)";
-        feel.style.backgroundImage = "url(" + animals[q] + ".png)";
+        plate.style.backgroundImage = "url(./imgs/" + animals[q] + ".png)";
+
+
+              // In these if statements I make the images for the two circular image container divs and the text below to align with whatever pops up on the plate.// 
+
 
         if (q == 0) {
-            know.style.backgroundImage = "url(sheep2.png)";
+            know.style.backgroundImage = "url(./imgs/sheep2.png)";
             knowText.innerHTML = "";
-            feel.style.backgroundImage = "url(sheep1.png)";
+            feel.style.backgroundImage = "url(./imgs/sheep1.png)";
             feelText.innerHTML = "";
 
         }
 
         if (q == 1) {
-            know.style.backgroundImage = "url(pig2a.png)";
+            know.style.backgroundImage = "url(./imgs/pig2a.png)";
             knowText.innerHTML = "Consider the life of a pregnant sow. Her incredible fertility is the source of her particular hell. While a cow will give birth to only a single calf at a time, the modern factory sow will birth, nurse, and raise an average of nearly nine piglets — a number that has been increased annually by industry breeders. She will invariably be kept pregnant as much as possible, which will prove to be the majority of her life. When she is approaching her due date, drugs to induce labor may be administered to make the timing more convenient for the farmer. After her piglets are weaned, a hormone injection makes the sow rapidly “cycle” so that she will be ready to be artificially inseminated again in only three weeks." + "<br>" + "<br>" +
                 "Four out of five times a sow will spend the sixteen weeks of her pregnancy confined in a “gestation crate” so small that she will not be able to turn around. Her bone density will decrease because of the lack of movement. She will be given no bedding and often will develop quarter- sized, blackened, pus-filled sores from chafing in the crate. (In one undercover investigation in Nebraska, pregnant pigs with multiple open sores on their faces, heads, shoulders, backs, and legs — some as large as a fist — were videotaped. A worker at the farm commented, “They all have sores. . . . There’s hardly a pig in there who doesn’t have a sore.”)" + "<br>" + "<br>" +
                 "More serious and pervasive is the suffering caused by boredom and isolation and the thwarting of the sow’s powerful urge to prepare for her coming piglets. In nature, she would spend much of her time before giving birth foraging and ultimately would build a nest of grass, leaves, or straw. To avoid excessive weight gain and to further reduce feed costs, the crated sow will be feed restricted and often hungry. Pigs also have an inborn tendency to use separate areas for sleeping and defecating that is totally thwarted in confinement. The pregnant pigs, like most all pigs in industrial systems, must lie or step in their excrement to force it through the slatted floor. The industry defends such confinement by arguing that it helps control and manage animals better, but the system makes good welfare practices more difficult because lame and diseased animals are almost impossible to identify when no animals are allowed to move." + "<br>" + "<br>" +
@@ -196,7 +98,7 @@
                 "Increasingly, instead of being forced into gestation crates, sows live in small group pens. They can’t run in a field or even enjoy the sun like Paul Willis’s pigs do, but they have space to sleep and stretch. The sows don’t get sores all over their bodies. They don’t gnaw frantically at the bars of their crates. This change hardly redeems or reverses the factory system, but it meaningfully improves the lives of sows." + "<br>" + "<br>" +
                 "Whether they are kept in gestation crates or small pens during pregnancy, when giving birth — what the industry calls “farrowing” — sows will almost invariably be confined in a crate just as constrictive as the gestation crate. One worker said it’s necessary to “beat the shit out of [the pregnant pigs] to get them inside the crates because they don’t want to go.” Another employee at a different farm described the routine use of rods to beat the sows bloody: “One guy smashed a sow’s nose in so bad that she ended up dying of starvation." + "<br>" + "<br>" +
                 "Those who defend pig factory farms argue that the farrowing crate is necessary because sows can sometimes accidentally crush their piglets. In the same way that the risk of a forest fire can be reduced by preemptively clearing the forest of all its trees, there is a cockeyed logic to this claim. The farrowing crate, like the gestation crate, confines the mother in a space so small she cannot turn around. Sometimes she will also be strapped to the floor. These practices do make it harder for mother pigs to crush their infants. What defenders of such practices don’t point out is that at farms like Willis’s, the problem doesn’t arise in the first place. Not surprisingly, when farmers select for “motherability” when breeding, and a mother pig’s sense of smell is not overpowered by the stench of her own liquefied feces beneath her, and her hearing is not impaired by the clanging of metal cages, and she is given space to investigate where her piglets are and exercise her legs so that she can lie down slowly, she finds it easy enough to avoid crushing her young. — Jonathan Safron Foer, Eating Animals";
-            feel.style.backgroundImage = "url(pig1a.png)";
+            feel.style.backgroundImage = "url(./imgs/pig1a.png)";
             feelText.innerHTML = "I don't eat pork. I've never eaten it. Part of that was that my parents didn't really cook it because it's not something any of us grew up with. Part of it is thinking about a pink pig, social and intelligent." +
                 "<br>" + "<br>" +
                 "It seems to me that it’s plainly wrong to eat factory-farmed pork or to feed it to one’s family. It’s probably even wrong to sit silently with friends eating factory-farmed pork, however difficult it can be to say something. Pigs clearly have rich minds and just as clearly are condemned to miserable lives on factory farms. The analogy of a dog kept in a closet is fairly accurate, if somewhat generous. The environmental case against eating factory-farmed pork is airtight and damning. — Jonathan Safron Foer, Eating animals";
@@ -205,7 +107,7 @@
         }
 
         if (q == 2) {
-            know.style.backgroundImage = "url(chicken2.png)";
+            know.style.backgroundImage = "url(./imgs/chicken2.png)";
             knowText.innerHTML =
 
                 "<p>It’s hard to get one’s head around the magnitude of 33,000 birds in one room. You don’t have to see it for yourself, or even do the math, to understand that things are packed pretty tight. In its Animal Welfare Guidelines, the National Chicken Council indicates an appropriate stocking density to be eight-tenths of a square foot per bird. That’s what’s considered animal welfare by a “mainstream” organization representing chicken producers, which shows you how thoroughly co- opted ideas about welfare have become — and why you can’t trust labels that come from anywhere but a reliable third-party source.</p>" + "<br>" + "<br>" +
@@ -220,7 +122,7 @@
 
             ;
 
-            feel.style.backgroundImage = "url(chicken1.png)";
+            feel.style.backgroundImage = "url(./imgs/chicken1.png)";
             feelText.innerHTML = "";
 
 
@@ -229,40 +131,40 @@
 
 
         if (q == 3) {
-            know.style.backgroundImage = "url(cow2.png)";
+            know.style.backgroundImage = "url(./imgs/cow2.png)";
             knowText.innerHTML = "";
-            feel.style.backgroundImage = "url(cow1.png)";
+            feel.style.backgroundImage = "url(./imgs/cow1.png)";
             feelText.innerHTML = "I've been a vegetarian since I was four. I've 'cheated' a few times over the past 28 years and there was one year when I ate chicken from the salad bar at Dalton. But when I think about meat, I can't eat it." + "<br>" + "<br>" + "When I was little, when I was served steak or beef of any kid, all I could think about was a cow's nose. I start thinking about their wet, warm noses what it feels like when they smell me. For some reason, just thinking about them looking at me nose-first, and there's no way I can take a bite.";
         }
 
 
         if (q == 4) {
-            know.style.backgroundImage = "url(octopus1.gif)";
+            know.style.backgroundImage = "url(./imgs/octopus1.gif)";
             knowText.innerHTML = "";
-            feel.style.backgroundImage = "url(octopus3.png)";
+            feel.style.backgroundImage = "url(./imgs/octopus3.png)";
             feelText.innerHTML = "";
         }
 
 
 
         if (q == 5) {
-            know.style.backgroundImage = "url(tuna2.png)";
+            know.style.backgroundImage = "url(./imgs/tuna2.png)";
             knowText.innerHTML = "";
-            feel.style.backgroundImage = "url(tuna1.png)";
+            feel.style.backgroundImage = "url(./imgs/tuna1.png)";
             feelText.innerHTML = "";
 
         }
 
         if (q == 6) {
-            know.style.backgroundImage = "url(turkey2.png)";
+            know.style.backgroundImage = "url(./imgs/turkey2.png)";
             knowText.innerHTML = "";
-            feel.style.backgroundImage = "url(turkey1.png)";
+            feel.style.backgroundImage = "url(./imgs/turkey1.png)";
             feelText.innerHTML = "";
 
         }
 
         if (q == 7) {
-            know.style.backgroundImage = "url(eggs2.png)";
+            know.style.backgroundImage = "url(./imgs/eggs2.png)";
             knowText.innerHTML = "Factory farms commonly manipulate food and light to increase productivity, often at the expense of the animals’ welfare. Egg farmers do this to reboot birds’ internal clocks so they start laying valuable eggs faster and, crucially, at the same time. Here’s how one poultry farmer described the situation to me:" + "<br>" + "<br>"
 
             "As soon as females mature — in the turkey industry at twenty- three to twenty-six weeks and with chickens sixteen to twenty — they’re put into barns and they lower the light; sometimes it’s total darkness twenty-four/seven. And then they put them on a very low-protein diet, almost a starvation diet. That will last about two or three weeks. Then they turn the lights on sixteen hours a day, or twenty with chickens, so she thinks it’s spring, and they put her on high-protein feed. She immediately starts laying." +
@@ -271,7 +173,7 @@
             "They have it down to such a science that they can stop it, start it, and everything. See, in the wild, when spring comes, the bugs come and the grass comes and the days get longer — that’s a key to tell the birds, 'Well, I better start laying. Spring is coming.'" + "<br>" + "<br>" +
 
             "So man has tapped into that already built-in thing. And by controlling the light, the feed, and when they eat, the industry can force the birds to lay eggs year-round. So that’s what they do. Turkey hens now lay 120 eggs a year and chickens lay over 300. That’s two or even three times as many as in nature. After that first year, they are killed because they won’t lay as many eggs in the second year — the industry figured out that it’s cheaper to slaughter them and start over than it is feed and house birds that lay fewer eggs. These practices are a big part of why poultry meat is so cheap today, but the birds suffer for it. — Jonathan Safron Foer's Eating Animals";
-            feel.style.backgroundImage = "url(eggs1.png)";
+            feel.style.backgroundImage = "url(./imgs/eggs1.png)";
             feelText.innerHTML = "Magical eggs. Heat moves them from liquid to solid. They comfort me like no other food. Eggs and toast — the intimacy of a weekend breakfast. I eat them when I'm sick. I eat them when I'm tired. I love eggs, especially when their yolks are orange. At the store, I buy the expensive option with endorsements such as 'cage-free' and 'from a small, Amish farm,' but I know they're still probably from chickens who are suffering. And I feel bad. But I buy them. A goal: to switch to tofu scramble or to keep my own chickens and to take care of them. I'd much prefer for an egg to be a gift than a commodity:" + "<br>" + "<br>" +
 
                 "'Hens may perceive their eggs as gifts that may be presented to their rooster, their flock-mates, or an honorary chicken/person. On Farm Life Forum’s Web page for poultry keepers, a woman wrote of a chicken her father had kept as a pet when he was a boy. Each evening, the hen appeared at the door of the house and would peck to be let inside. When the door opened, she would proceed directly to the boy’s bed—where she would lay an egg on the pillow. Then, gift delivered, she would stride back to the door and return to the henhouse.' —  Sy Montgomery. Birdology";
@@ -280,7 +182,7 @@
         }
 
         if (q == 8) {
-            know.style.backgroundImage = "url(milk2.png)";
+            know.style.backgroundImage = "url(./imgs/milk2.png)";
             knowText.innerHTML = "AS;DLKFJASDLKFJAS;DLKFJASDLKFJ";
             feel.style.backgroundImage = "url(milk1.png)";
             feelText.innerHTML = "AS;DLKFJASDLKFJAS;DLKFJASDLKFJ";
@@ -289,17 +191,17 @@
         }
 
         if (q == 9) {
-            know.style.backgroundImage = "url(sheep2.png)";
+            know.style.backgroundImage = "url(./imgs/sheep2.png)";
             knowText.innerHTML = "sdfsf";
-            feel.style.backgroundImage = "url(sheep1.png)";
+            feel.style.backgroundImage = "url(./imgs/sheep1.png)";
             feelText.innerHTML = "sdfsf";
 
         }
 
         if (q == 10) {
-            know.style.backgroundImage = "url(scallops1.png)";
+            know.style.backgroundImage = "url(./imgs/scallops1.png)";
             knowText.innerHTML = "Even a brainless scallop’s little heart beats faster when the mollusk is approached by a predator, just like yours or mine would do were we to be accosted by a mugger. — Sy Montgomery, The Soul of an Octopus";
-            feel.style.backgroundImage = "url(scallops2.png)";
+            feel.style.backgroundImage = "url(./imgs/scallops2.png)";
             feelText.innerHTML = "I used to love eating scallops, especially when their browned on the outside after cooking in clarified butter.I particulary love the sweeter ones, which I learned are the bodies — specifically the adductor muscles that open and close the— shells of the pinker-bodied females. But I can't eat them anymore." + "<br>" + "<br>" + "Once I learned that they have eyes — 50 to 100 eyes that they use to detect light, dark, and motion. And they're often a brilliant blue color. Unlike us, they don't have corneas but instead use their retinas to focus light. Once I saw scallop eyes, I couldn't eat them anymore. But part of me would love to because I love their taste. Even the idea of 'loving the taste of a creature with eyes — it kind of weirds me out.";
 
         }
